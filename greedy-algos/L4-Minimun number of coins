@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    int findMin(int n) {
+        vector<int>coins = {1,2,5,10};
+        int k = coins.size();
+        int num=0;
+        for(int i=k-1;i>=0;i--){
+            while(coins[i]<=n){
+                n-=coins[i];
+                num++;
+            }
+        }
+        return num;
+        
+    }
+};
