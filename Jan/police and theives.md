@@ -1,12 +1,12 @@
-Intuition:
+## I N T U I T I O N ##
 
-Store positions of police and thieves separately.
-
-Use two pointers to try pairing the nearest police and thief.
-
-If their distance is ≤ k, one catch is made and both move forward.
-
-Otherwise, move the pointer of the one that is behind to find a closer match.
+       Store positions of police and thieves separately.
+       
+       Use two pointers to try pairing the nearest police and thief.
+       
+       If their distance is ≤ k, one catch is made and both move forward.
+       
+       Otherwise, move the pointer of the one that is behind to find a closer match.
 
 ```cpp
 int catchThieves(vector<char> &arr, int k) {
