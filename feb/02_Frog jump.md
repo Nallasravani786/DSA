@@ -1,4 +1,4 @@
-## I N T U T I O N 
+## I N T U I T I O N 
 This is a DP + recursion (memoization) solution to find the minimum energy needed to reach the last index.
 
 f(ind) means: minimum cost to reach index ind from index 0.
