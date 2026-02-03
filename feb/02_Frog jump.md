@@ -1,5 +1,5 @@
-## I N T U I T I O N 
-This is a DP + recursion (memoization) solution to find the minimum energy needed to reach the last index.
+## I N T U I T I O N (memoization) 
+This is a DP + recursion solution to find the minimum energy needed to reach the last index.
 
 f(ind) means: minimum cost to reach index ind from index 0.
 
@@ -38,3 +38,76 @@ int f(int ind, vector<int>&height,vector<int>&dp){
         
     }
 ```
+## I N T U I T I O N (Tabulation)
+
+**Intuition:**
+
+- Build solution from **0 → n−1**
+
+- At each stair, take the **minimum of coming from 1 step or 2 steps back**
+
+**Time Complexity:** `O(n)`
+**Space Complexity:** `O(n)`
+
+```cpp
+int minCost(vector&lt;int&gt;& height) {
+
+    int n = height.size();
+
+    vector&lt;int&gt; dp(n, 0);
+
+    dp\[0\] = 0;
+
+    for (int ind = 1; ind &lt; n; ind++) {
+
+        int jump1 = dp\[ind - 1\] + abs(height\[ind\] - height\[ind - 1\]);
+
+        int jump2 = INT_MAX;
+
+        if (ind &gt; 1)
+
+            jump2 = dp\[ind - 2\] + abs(height\[ind\] - height\[ind - 2\]);
+
+        dp\[ind\] = min(jump1, jump2);
+
+    }
+
+    return dp\[n - 1\];
+
+}
+```
+
+## I N T U T I O N (Space optimization)
+
+**Intuition:**
+
+- Only the **previous two states** are needed at any time
+
+- Replace DP array with **two variables**
+
+**Time Complexity:** `O(n)`
+**Space Complexity:** `O(1)`
+
+```cpp
+int minCost(vector<int>& height) {
+      int n = height.size();
+      
+       int prev1 = 0;
+       int prev2=0;
+       int curr =0;
+       int jump2 = INT_MAX;
+       for(int ind =1;ind<n;ind++){
+      int jump1 = abs(height[ind]-height[ind-1]) + prev1;
+      
+      if(ind >1) jump2 = abs(height[ind]-height[ind-2]) + prev2;
+         curr=  min(jump1,jump2);
+         
+         prev2 =prev1;
+         prev1 = curr;
+       }
+       
+        return curr;
+    }
+```
+
+
