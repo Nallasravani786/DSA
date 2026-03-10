@@ -14,6 +14,7 @@ So instead of checking the entire row and column every time, we use counting to 
 
 ###### C O D E 
 
+
 ```cpp
 int numSpecial(vector<vector<int>>& mat) {
        int m = mat.size();
