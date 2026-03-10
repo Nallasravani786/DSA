@@ -1,3 +1,11 @@
+### I M A G E (handles all integers)
+<img width="2031" height="1156" alt="image" src="https://github.com/user-attachments/assets/98894e52-e6c0-4545-8377-8d8c3d40c08c" />
+
+### I M A G E(for non negative integers)
+<img width="1997" height="1125" alt="image" src="https://github.com/user-attachments/assets/54a6e7ed-1ca3-4797-8e05-5193e227d53f" />
+
+
+
 ### I N T U I T I O N
   Core Intuition: Digit-by-Digit MultiplicationOkkasari ee points choodu:
   
