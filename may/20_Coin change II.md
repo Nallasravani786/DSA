@@ -45,3 +45,31 @@ int f(int ind,vector<vector<int>>&dp,vector<int>&coins,int amount){
     }
 
 ```
+
+###### C O D E ( t a b u l a t i o n )
+
+```cpp
+int change(int amount,vector<int>&coins){
+            int n = coins.size();
+            vector<vector<unsigned long long>>dp(n,vector<unsigned long long>(amount+1,0));
+
+           for(int amt =0; amt<=amount; amt++){
+            if(amt%coins[0] == 0) dp[0][amt] =1;
+            else dp[0][amt] = 0;
+           }
+
+           for(int ind =1;ind<n;ind++){
+
+            for(int am=0;am<=amount;am++){
+               unsigned long long take = 0;
+                if(coins[ind] <= am) take = dp[ind][am-coins[ind]];
+               unsigned long long nottake = dp[ind-1][am];
+               dp[ind][am] = take + nottake;
+
+            }
+           }
+           return (int)dp[n-1][amount];
+        }
+
+
+```
