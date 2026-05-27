@@ -56,4 +56,5 @@ Handle 0 carefully since +0 and -0 give 2 ways.
 
 ```
 
-###### tabulation code and space optimization code same as ques:
+###### tabulation code and space optimization code same as ques: 27_Perfect sum   , 27_partition with given difference
+   
