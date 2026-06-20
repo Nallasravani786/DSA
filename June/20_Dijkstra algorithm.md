@@ -16,6 +16,8 @@ Continue this process until all possible shortest distances are finalized.
 
 Main idea:  Always process the node with the smallest known distance first and keep improving the shortest paths of its neighbors.
 
+time complexity : ElogV
+
 ###### C O D E ( using priority queue )
 ```cpp
  vector<int> dijkstra(int V, vector<vector<int>> &edges, int src) {
@@ -58,4 +60,49 @@ Main idea:  Always process the node with the smallest known distance first and k
         return dist;
     }
 
+```
+###### C O D E ( using set )
+```cpp
+ vector<int> dijkstra(int V,vector<vector<int>>&edges,int src){
+        
+        set<pair<int,int>>st;
+        
+        vector<vector<pair<int,int>>>adj(V);
+        
+        for(auto e:edges){
+            adj[e[0]].push_back({e[1],e[2]});
+            adj[e[1]].push_back({e[0],e[2]});
+        }
+        
+        st.insert({0,src});
+        
+        vector<int>dist(V,1e9);
+        
+        dist[src] = 0;
+        
+       while(!st.empty()){
+           auto it = *(st.begin());
+           int dis = it.first;
+           int node = it.second;
+           
+           st.erase(it);
+           
+           for(auto i : adj[node]){
+               int edgewt = i.second;
+               int adjnode = i.first;
+               
+               if(edgewt + dis < dist[adjnode]){
+                   
+                   
+                   if(dist[adjnode]!= 1e9) {
+                       st.erase({dist[adjnode],adjnode});
+                   }
+                   dist[adjnode] = edgewt + dis;
+                   st.insert({dist[adjnode],adjnode});
+                   
+               }
+           }
+        }
+           return dist;
+    }
 ```
