@@ -1,3 +1,43 @@
+//Q1 - 
+long long minMaxConvoyLoad(int n, int k, long long escort, int maxCrates, vector<long long> weights) {
+    long long low = 0, high = escort;
+    for (long long w : weights) {
+        low = max(low, w + escort);
+        high += w;
+    }
+    
+    long long ans = high;
+    while (low <= high) {
+        long long mid = low + (high - low) / 2;
+        int trucks = 1, cnt = 0;
+        long long sum = 0;
+        
+        for (long long w : weights) {
+            if (sum + w + escort <= mid && cnt < maxCrates) {
+                sum += w;
+                cnt++;
+            } else {
+                trucks++;
+                sum = w;
+                cnt = 1;
+            }
+        }
+        
+        if (trucks <= k) {
+            ans = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+    return ans;
+}
+
+//========================================================================================================//
+//========================================================================================================//
+
+
+/// Q2 - max xor pair value
 struct Node {
     int child[2] = {0};
 };
